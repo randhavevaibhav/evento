@@ -7,7 +7,7 @@ type EventListProps = {
 
 export const EventList = ({ events }: EventListProps) => {
   return (
-    <section>
+    <section className="max-w-[1100px] flex flex-wrap gap-10 justify-center px-[20px]">
       {events.map((event) => {
         return <EventCard event={event} key={event.id} />;
       })}

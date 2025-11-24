@@ -6,6 +6,6 @@ export type EventoEvent = {
   location: string;
   date: Date;
   organizerName: string;
-  imageURL: string;
+  imageUrl: string;
   description: string;
 };
