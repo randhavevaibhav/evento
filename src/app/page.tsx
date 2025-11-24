@@ -8,7 +8,7 @@ export default function Home() {
       </h1>
       <p className="mb-12 mt-7 text-2xl lg:text-3xl opacity-75">
         Browse more than{" "}
-        <span className="font-bold italic underline text-[#a4f839]">
+        <span className="font-bold italic underline text-accent">
           10,000 events
         </span>{" "}
         around you !
@@ -17,7 +17,7 @@ export default function Home() {
         <input
           type="text"
           placeholder="Search events in any city..."
-          className="w-full h-16 rounded-lg bg-white/[7%] px-6 ring-[#a4f839] focus:ring-2 transition focus:bg-white/10 outline-none"
+          className="w-full h-16 rounded-lg bg-white/[7%] px-6 ring-accent focus:ring-2 transition focus:bg-white/10 outline-none"
           spellCheck={false}
         />
       </form>
