@@ -9,15 +9,20 @@ type EventsPageProps = {
 };
 
 export default async function EventsPage({ params }: EventsPageProps) {
+  const city = params.city;
   const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=austin`
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
   );
 
   if (!response.ok) {
-    return <div>Something went wrong While fetching events ...</div>;
+    return (
+      <div className="mx-auto mt-10">
+        Something went wrong While fetching events ...
+        <span className="text-2xl">😓</span>
+      </div>
+    );
   }
 
-  const city = params.city;
   const events: EventoEvent[] = await response.json();
 
   return (
