@@ -1,4 +1,5 @@
 import { H1 } from "@/components/H1";
+import { EventList } from "@/components/event-list";
 import { EventoEvent } from "@/lib/types";
 
 type EventsPageProps = {
@@ -8,13 +9,15 @@ type EventsPageProps = {
 };
 
 export default async function EventsPage({ params }: EventsPageProps) {
-  const city = params.city;
   const response = await fetch(
     `https://bytegrad.com/course-assets/projects/evento/api/events?city=austin`
   );
 
   if (!response.ok) {
+    return <div>Something went wrong While fetching events ...</div>;
   }
+
+  const city = params.city;
   const events: EventoEvent[] = await response.json();
 
   return (
@@ -29,9 +32,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
         )}
       </H1>
 
-      {events.map((event) => {
-        return <section key={event.id}>{event.name}</section>;
-      })}
+      <EventList events={events} />
     </main>
   );
 }
