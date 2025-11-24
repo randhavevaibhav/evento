@@ -14,9 +14,7 @@ const routes = [
 export const Footer = () => {
   return (
     <footer className="mt-auto flex items-center justify-between h-16 border-t border-white/10 px-3 sm:px-9 text-xs text-white/30">
-      <small className="text-sm">
-        &copy; 2050 ByteGrad. All rights reserved.
-      </small>
+      <small className="text-sm">&copy; 2050 VTR. All rights reserved.</small>
       <ul className="flex gap-x-3 sm:gap-x-8">
         {routes.map((route, idx) => {
           return (
