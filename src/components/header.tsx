@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { Logo } from "./logo";
-import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/util";
 
 const routes = [
   {
@@ -28,7 +28,7 @@ export const Header = () => {
             return (
               <li
                 key={idx}
-                className={clsx(
+                className={cn(
                   ` hover:text-white flex items-center transition relative`,
                   {
                     "text-white": activePathname === route.path,
