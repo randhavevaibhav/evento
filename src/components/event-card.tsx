@@ -10,15 +10,15 @@ export const EventCard = ({ event }: EventCardProps) => {
   return (
     <Link
       href={`/event/${event.slug}`}
-      className="flex-1 basis-80 h-[380px] max-w-[500px]"
+      className="flex-1 basis-80 h-[380px] max-w-[500px] state-effect"
     >
-      <section className="flex w-full h-full flex-col  bg-white/[3%] rounded-xl overflow-hidden relative hover:scale-105 active:scale-[1.02] transition">
+      <section className="flex w-full h-full flex-col  bg-white/[3%] rounded-xl overflow-hidden relative">
         <Image
           src={event.imageUrl}
           alt={event.name}
           width={500}
           height={280}
-          className="h-[60%] object-fit"
+          className="h-[60%] object-cover"
         />
         <div className="flex flex-1 flex-col justify-center items-center">
           <h2 className="text-2xl font-semibold">{event.name}</h2>
