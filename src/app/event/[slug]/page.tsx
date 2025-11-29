@@ -1,5 +1,6 @@
 import { H1 } from "@/components/H1";
 import { EventoEvent } from "@/lib/types";
+import { sleep } from "@/lib/util";
 import Image from "next/image";
 
 type EventPageProps = {

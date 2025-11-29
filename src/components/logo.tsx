@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Logo = () => {
   return (
-    <Link href={`/`}>
+    <Link href={`/`} className="p-2">
       <Image
         src={`https://bytegrad.com/course-assets/react-nextjs/evento.png`}
         alt="EVENTO logo"
