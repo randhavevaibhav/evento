@@ -1,3 +1,7 @@
+import { H1 } from "@/components/H1";
+import { EventoEvent } from "@/lib/types";
+import Image from "next/image";
+
 type EventPageProps = {
   params: {
     slug: string;
@@ -19,9 +23,51 @@ export default async function EventPage({ params }: EventPageProps) {
     );
   }
 
-  const event = await response.json();
+  const event: EventoEvent = await response.json();
 
   console.log("event ===> ", event);
 
-  return <main>Event page</main>;
+  return (
+    <main>
+      <section className="relative py-14 md:py-20 overflow-hidden flex justify-center items-center">
+        <Image
+          src={event.imageUrl}
+          alt={`${event.slug}_background`}
+          fill
+          quality={50}
+          priority
+          className="object-cover blur-3xl z-0"
+          sizes="(max-width:1280px) 100vw, 1280px"
+        />
+        <div className="z-1 relative flex flex-col lg:flex-row gap-6 lg:gap-16">
+          <Image
+            src={event.imageUrl}
+            alt={`${event.slug}`}
+            width={300}
+            height={201}
+            className="border-2 rounded-xl border-white/50 object-cover"
+          />
+          <div className="flex flex-col">
+            <p className="text-white/75">
+              {new Date(event.date).toLocaleDateString("en-Us", {
+                weekday: "long",
+                month: "long",
+                day: "2-digit",
+              })}
+            </p>
+            <H1 className="mb-2 mt-1 whitespace-nowrap lg:text-5xl">
+              {event.name}
+            </H1>
+            <p className="whitespace-nowrap text-xl text-white/75">
+              organized by <span className="italic">{event.organizerName}</span>
+            </p>
+            <button className="bg-white/20  capitalize w-[95vw] sm:w-full py-2 rounded-md border-white/10 border-2 mt-5 lg:mt-auto   hover:scale-105 transition active:scale-[1.02]">
+              Get tickets
+            </button>
+          </div>
+        </div>
+      </section>
+      <div></div>
+    </main>
+  );
 }
