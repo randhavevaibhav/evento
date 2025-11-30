@@ -1,5 +1,5 @@
 import { H1 } from "@/components/H1";
-import { EventoEvent } from "@/lib/types";
+import { getEvent } from "@/lib/util";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -13,12 +13,9 @@ export async function generateMetadata({
   params,
 }: EventPageProps): Promise<Metadata> {
   const slug = params.slug;
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-
-  const event: EventoEvent = await response.json();
-
+  const event = await getEvent({
+    slug,
+  });
   return {
     title: `${event.name}`,
   };
@@ -26,22 +23,10 @@ export async function generateMetadata({
 
 export default async function EventPage({ params }: EventPageProps) {
   const slug = params.slug;
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
 
-  if (!response.ok) {
-    return (
-      <div className="mx-auto mt-10">
-        Something went wrong While fetching event data ...
-        <span className="text-2xl">😓</span>
-      </div>
-    );
-  }
-
-  const event: EventoEvent = await response.json();
-
-  // console.log("event ===> ", event);
+  const event = await getEvent({
+    slug,
+  });
 
   return (
     <main>
